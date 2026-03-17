@@ -3,216 +3,304 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ImpactHub | Volunteer Coordination</title>
-    <!-- Google Fonts -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-    <!-- FontAwesome for Icons -->
+    <title>Impact | Volunteer Coordination</title>
+    <!-- Google Fonts: Outfit -->
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <!-- Font Awesome for sleek icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <!-- Custome CSS -->
+    <!-- Custom Stylesheet -->
     <link rel="stylesheet" href="style.css">
-    <!-- Chart.js -->
+    <!-- Chart.js for Impact Data Visualization -->
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 </head>
 <body>
-    <div class="dashboard-container">
+    <!-- Background Animated Shapes -->
+    <div class="bg-shape shape-1"></div>
+    <div class="bg-shape shape-2"></div>
+    <div class="bg-shape shape-3"></div>
+
+    <div class="app-container glass">
         <!-- Sidebar Navigation -->
-        <aside class="sidebar">
-            <div class="sidebar-header">
+        <aside class="sidebar border-right">
+            <div class="logo-area">
                 <i class="fa-solid fa-hands-holding-circle logo-icon"></i>
-                <h2>Impact<span class="highlight">Hub</span></h2>
+                <h1 class="logo-text">Impact<span class="dot">.</span></h1>
             </div>
-            
-            <ul class="nav-links">
-                <li class="active">
-                    <a href="#"><i class="fa-solid fa-chart-line"></i> Dashboard</a>
-                </li>
-                <li>
-                    <a href="#"><i class="fa-solid fa-users"></i> Volunteers</a>
-                </li>
-                <li>
-                    <a href="#"><i class="fa-solid fa-calendar-check"></i> Opportunities</a>
-                </li>
-                <li>
-                    <a href="#"><i class="fa-solid fa-hand-holding-heart"></i> Impact Reports</a>
-                </li>
-                <li>
-                    <a href="#"><i class="fa-solid fa-bullhorn"></i> Campaigns</a>
-                </li>
-            </ul>
+
+            <nav class="nav-menu">
+                <button class="nav-item active" data-target="dashboard">
+                    <i class="fa-solid fa-border-all"></i>
+                    <span>Dashboard</span>
+                </button>
+                <button class="nav-item" data-target="volunteers">
+                    <i class="fa-solid fa-users"></i>
+                    <span>Volunteers</span>
+                </button>
+                <button class="nav-item" data-target="opportunities">
+                    <i class="fa-solid fa-briefcase"></i>
+                    <span>Opportunities</span>
+                </button>
+                <button class="nav-item" data-target="campaigns">
+                    <i class="fa-solid fa-bullhorn"></i>
+                    <span>Campaigns</span>
+                </button>
+                <button class="nav-item" data-target="impact">
+                    <i class="fa-solid fa-chart-pie"></i>
+                    <span>Impact Reports</span>
+                </button>
+            </nav>
 
             <div class="sidebar-footer">
-                <a href="#"><i class="fa-solid fa-gear"></i> Settings</a>
-                <a href="#"><i class="fa-solid fa-sign-out-alt"></i> Logout</a>
+                <div class="user-profile">
+                    <img src="https://i.pravatar.cc/100?img=32" alt="Admin" class="avatar">
+                    <div class="user-info">
+                        <p class="user-name">Sarah Jenkins</p>
+                        <p class="user-role">Coordinator</p>
+                    </div>
+                </div>
             </div>
         </aside>
 
-        <!-- Main Content -->
+        <!-- Main Content Area -->
         <main class="main-content">
-            <!-- Header -->
-            <header class="top-header">
-                <div class="search-bar">
+            <!-- Topbar (Search & Notifications) -->
+            <header class="topbar">
+                <div class="search-bar glass border-all">
                     <i class="fa-solid fa-search"></i>
-                    <input type="text" placeholder="Search volunteers, skills, or campaigns...">
+                    <input type="text" placeholder="Search volunteers, campaigns, or skills...">
                 </div>
-                
-                <div class="user-profile">
-                    <button class="icon-btn notification-btn">
-                        <i class="fa-regular fa-bell"></i>
-                        <span class="badge">3</span>
-                    </button>
-                    <div class="profile-info">
-                        <img src="https://i.pravatar.cc/150?img=32" alt="Admin Profile" class="avatar">
-                        <div class="profile-text">
-                            <span class="name">Sarah Jenkins</span>
-                            <span class="role">Coordinator</span>
-                        </div>
-                    </div>
+                <div class="topbar-actions">
+                    <button id="btn-notifications" class="icon-btn glass border-all"><i class="fa-regular fa-bell"></i><span class="badge">3</span></button>
+                    <button id="btn-settings" class="icon-btn glass border-all"><i class="fa-solid fa-gear"></i></button>
+                    <button id="btn-new-task" class="primary-btn"><i class="fa-solid fa-plus"></i> New Task</button>
                 </div>
             </header>
 
-            <!-- Dashboard Title -->
-            <div class="page-title">
-                <h1>Overview</h1>
-                <p>Welcome back! Here's what's happening today.</p>
-                <div class="title-actions">
-                    <button class="btn btn-secondary"><i class="fa-solid fa-download"></i> Export Data</button>
-                    <button class="btn btn-primary"><i class="fa-solid fa-plus"></i> New Event</button>
-                </div>
-            </div>
-
-            <!-- KPI Cards -->
-            <section class="kpi-grid">
-                <div class="kpi-card">
-                    <div class="kpi-icon blue">
-                        <i class="fa-solid fa-users"></i>
-                    </div>
-                    <div class="kpi-details">
-                        <p class="kpi-label">Active Volunteers</p>
-                        <h3 class="kpi-value">1,284</h3>
-                        <p class="kpi-trend positive"><i class="fa-solid fa-arrow-trend-up"></i> +12% this month</p>
-                    </div>
-                </div>
+            <!-- Views Container -->
+            <div class="views-wrapper">
                 
-                <div class="kpi-card">
-                    <div class="kpi-icon green">
-                        <i class="fa-solid fa-clock"></i>
+                <!-- View: Dashboard -->
+                <section id="view-dashboard" class="view active">
+                    <div class="view-header">
+                        <h2>Welcome back, Sarah 👋</h2>
+                        <p class="subtitle">Here is what's happening with your initiatives today.</p>
                     </div>
-                    <div class="kpi-details">
-                        <p class="kpi-label">Hours Logged</p>
-                        <h3 class="kpi-value">8,450</h3>
-                        <p class="kpi-trend positive"><i class="fa-solid fa-arrow-trend-up"></i> +5% this month</p>
-                    </div>
-                </div>
 
-                <div class="kpi-card">
-                    <div class="kpi-icon purple">
-                        <i class="fa-solid fa-calendar-days"></i>
-                    </div>
-                    <div class="kpi-details">
-                        <p class="kpi-label">Upcoming Events</p>
-                        <h3 class="kpi-value">24</h3>
-                        <p class="kpi-trend neutral"><i class="fa-solid fa-minus"></i> Same as last week</p>
-                    </div>
-                </div>
-
-                <div class="kpi-card">
-                    <div class="kpi-icon orange">
-                        <i class="fa-solid fa-seedling"></i>
-                    </div>
-                    <div class="kpi-details">
-                        <p class="kpi-label">Communities Served</p>
-                        <h3 class="kpi-value">156</h3>
-                        <p class="kpi-trend positive"><i class="fa-solid fa-arrow-trend-up"></i> +3 new areas</p>
-                    </div>
-                </div>
-            </section>
-
-            <!-- Charts Section -->
-            <section class="charts-grid">
-                <div class="chart-card">
-                    <div class="chart-header">
-                        <h3>Volunteer Engagement</h3>
-                        <select class="chart-filter">
-                            <option>Last 6 Months</option>
-                            <option>This Year</option>
-                        </select>
-                    </div>
-                    <div class="chart-body">
-                        <canvas id="engagementChart"></canvas>
-                    </div>
-                </div>
-
-                <div class="chart-card">
-                    <div class="chart-header">
-                        <h3>Impact by Category</h3>
-                        <button class="icon-btn"><i class="fa-solid fa-ellipsis"></i></button>
-                    </div>
-                    <div class="chart-body">
-                        <canvas id="impactChart"></canvas>
-                    </div>
-                </div>
-            </section>
-
-            <!-- Bottom Section (Tables/Lists) -->
-            <section class="bottom-grid">
-                <!-- Recent Activities -->
-                <div class="data-card">
-                    <div class="card-header">
-                        <h3>Recent Sign-ups</h3>
-                        <a href="#" class="view-all">View All</a>
-                    </div>
-                    <div class="table-responsive">
-                        <table class="data-table">
-                            <thead>
-                                <tr>
-                                    <th>Volunteer</th>
-                                    <th>Event/Project</th>
-                                    <th>Skills</th>
-                                    <th>Status</th>
-                                </tr>
-                            </thead>
-                            <tbody id="volunteer-table-body">
-                                <!-- Data injected via JS -->
-                            </tbody>
-                        </table>
-                    </div>
-                </div>
-
-                <!-- Upcoming Needs -->
-                <div class="data-card needs-card">
-                    <div class="card-header">
-                        <h3>Urgent Needs</h3>
-                    </div>
-                    <ul class="needs-list">
-                        <li>
-                            <div class="need-info">
-                                <h4>Community Garden Cleanup</h4>
-                                <p>Needs 5 more volunteers tomorrow</p>
+                    <!-- Metrics Grid -->
+                    <div class="metrics-grid">
+                        <div class="metric-card glass border-all">
+                            <div class="metric-icon" style="background: rgba(123, 44, 191, 0.2); color: #c77dff;">
+                                <i class="fa-solid fa-users"></i>
                             </div>
-                            <span class="urgency high">High</span>
-                        </li>
-                        <li>
-                            <div class="need-info">
-                                <h4>Tech Mentorship Workshop</h4>
-                                <p>Looking for 2 Python experts</p>
+                            <div class="metric-data">
+                                <h3>Total Volunteers</h3>
+                                <div class="metric-value">1,284 <span class="trend positive"><i class="fa-solid fa-arrow-up"></i> 12%</span></div>
                             </div>
-                            <span class="urgency medium">Medium</span>
-                        </li>
-                        <li>
-                            <div class="need-info">
-                                <h4>Food Drive Organization</h4>
-                                <p>Need drivers for weekend</p>
+                        </div>
+                        <div class="metric-card glass border-all">
+                            <div class="metric-icon" style="background: rgba(58, 134, 255, 0.2); color: #3a86ff;">
+                                <i class="fa-solid fa-clock"></i>
                             </div>
-                            <span class="urgency low">Low</span>
-                        </li>
-                    </ul>
-                </div>
-            </section>
+                            <div class="metric-data">
+                                <h3>Hours Logged</h3>
+                                <div class="metric-value">8,405 <span class="trend positive"><i class="fa-solid fa-arrow-up"></i> 5%</span></div>
+                            </div>
+                        </div>
+                        <div class="metric-card glass border-all">
+                            <div class="metric-icon" style="background: rgba(6, 214, 160, 0.2); color: #06d6a0;">
+                                <i class="fa-solid fa-leaf"></i>
+                            </div>
+                            <div class="metric-data">
+                                <h3>Projects Completed</h3>
+                                <div class="metric-value">142 <span class="trend neutral"><i class="fa-solid fa-minus"></i> 0%</span></div>
+                            </div>
+                        </div>
+                        <div class="metric-card glass border-all">
+                            <div class="metric-icon" style="background: rgba(255, 209, 102, 0.2); color: #ffd166;">
+                                <i class="fa-solid fa-fire"></i>
+                            </div>
+                            <div class="metric-data">
+                                <h3>Active Campaigns</h3>
+                                <div class="metric-value">8 <span class="trend positive"><i class="fa-solid fa-arrow-up"></i> 2</span></div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="dashboard-split">
+                        <!-- Chart Section -->
+                        <div class="chart-container glass border-all flex-2">
+                            <div class="section-top">
+                                <h3>Volunteer Engagement</h3>
+                                <select class="glass-select"><option>This Month</option><option>Last Month</option></select>
+                            </div>
+                            <div class="canvas-wrapper">
+                                <canvas id="dashboardChart"></canvas>
+                            </div>
+                        </div>
+
+                        <!-- Recent Activity -->
+                        <div class="recent-activity glass border-all flex-1">
+                            <h3>Live Updates</h3>
+                            <ul class="activity-list">
+                                <li class="activity-item">
+                                    <div class="activity-dot bg-primary"></div>
+                                    <div class="activity-text">
+                                        <p><strong>Marcus T.</strong> signed up for <em>Clean Beach Drive</em></p>
+                                        <span class="time">10 mins ago</span>
+                                    </div>
+                                </li>
+                                <li class="activity-item">
+                                    <div class="activity-dot bg-success"></div>
+                                    <div class="activity-text">
+                                        <p><em>Food Bank Sort</em> reached its volunteer goal!</p>
+                                        <span class="time">2 hours ago</span>
+                                    </div>
+                                </li>
+                                <li class="activity-item">
+                                    <div class="activity-dot bg-secondary"></div>
+                                    <div class="activity-text">
+                                        <p><strong>Elena R.</strong> logged 5 hours for tutoring.</p>
+                                        <span class="time">4 hours ago</span>
+                                    </div>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- View: Volunteers -->
+                <section id="view-volunteers" class="view">
+                    <div class="view-header split-header">
+                        <div>
+                            <h2>Volunteer Directory</h2>
+                            <p class="subtitle">Manage and find volunteers with specific skills.</p>
+                        </div>
+                        <div class="filters">
+                            <select class="glass-select"><option>All Skills</option><option>Medical</option><option>Logistics</option><option>Education</option></select>
+                        </div>
+                    </div>
+                    
+                    <div class="volunteers-grid" id="volunteers-container">
+                        <!-- Populated by JS -->
+                    </div>
+                </section>
+
+                <!-- View: Opportunities -->
+                <section id="view-opportunities" class="view">
+                    <div class="view-header">
+                        <h2>Opportunities Board</h2>
+                        <p class="subtitle">Match volunteers to open tasks and critical needs.</p>
+                    </div>
+
+                    <div class="kanban-board">
+                        <div class="kanban-column glass border-all">
+                            <div class="kanban-header">
+                                <h3>Open <span class="count">4</span></h3>
+                            </div>
+                            <div class="kanban-cards" id="tasks-open">
+                                <!-- Populated by JS -->
+                            </div>
+                        </div>
+                        <div class="kanban-column glass border-all">
+                            <div class="kanban-header">
+                                <h3>In Progress <span class="count">3</span></h3>
+                            </div>
+                            <div class="kanban-cards" id="tasks-progress">
+                                <!-- Populated by JS -->
+                            </div>
+                        </div>
+                        <div class="kanban-column glass border-all">
+                            <div class="kanban-header">
+                                <h3>Completed <span class="count">24</span></h3>
+                            </div>
+                            <div class="kanban-cards" id="tasks-completed">
+                                <!-- Populated by JS -->
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- View: Campaigns -->
+                <section id="view-campaigns" class="view">
+                    <div class="view-header">
+                        <h2>Active Campaigns</h2>
+                        <p class="subtitle">Track broad initiatives across different locations.</p>
+                    </div>
+
+                    <div class="campaign-list" id="campaigns-container">
+                        <!-- Populated by JS -->
+                    </div>
+                </section>
+
+                <!-- View: Impact Reports -->
+                <section id="view-impact" class="view">
+                    <div class="view-header">
+                        <h2>Impact Reports</h2>
+                        <p class="subtitle">Deep dive into the data measuring your social footprint.</p>
+                    </div>
+
+                    <div class="impact-grid">
+                        <div class="impact-card glass border-all">
+                            <h3>Impact by Category</h3>
+                            <div class="canvas-wrapper auto-height">
+                                <canvas id="impactDoughnut"></canvas>
+                            </div>
+                        </div>
+                        <div class="impact-card glass border-all flex-2-col">
+                            <h3>Yearly Footprint Comparison</h3>
+                            <div class="canvas-wrapper">
+                                <canvas id="impactBarChart"></canvas>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+            </div>
         </main>
     </div>
 
+    <!-- Modal: New Task -->
+    <div id="modal-new-task" class="modal-overlay">
+        <div class="modal-content glass border-all">
+            <div class="modal-header">
+                <h2>Create New Opportunity</h2>
+                <button class="close-modal"><i class="fa-solid fa-xmark"></i></button>
+            </div>
+            <form id="form-new-task" class="modal-form">
+                <div class="form-group">
+                    <label>Opportunity Title</label>
+                    <input type="text" name="title" placeholder="e.g. Volunteer Coordinator" required>
+                </div>
+                <div class="form-group">
+                    <label>Organization</label>
+                    <input type="text" name="org" placeholder="e.g. Red Cross" required>
+                </div>
+                <div class="form-row">
+                    <div class="form-group">
+                        <label>Initial Status</label>
+                        <select name="status">
+                            <option value="open">Open</option>
+                            <option value="progress">In Progress</option>
+                            <option value="completed">Completed</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label>Urgency Level</label>
+                        <select name="urgency">
+                            <option value="normal">Standard</option>
+                            <option value="urgent">Urgent</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="modal-actions">
+                    <button type="button" class="icon-btn border-all close-modal">Cancel</button>
+                    <button type="submit" class="primary-btn">Create Task</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- Custom Logic -->
     <script src="script.js"></script>
 </body>
 </html>
