@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ImpactHub | Volunteer Coordination</title>
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <!-- FontAwesome for Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Custome CSS -->
+    <link rel="stylesheet" href="style.css">
+    <!-- Chart.js -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+    <div class="dashboard-container">
+        <!-- Sidebar Navigation -->
+        <aside class="sidebar">
+            <div class="sidebar-header">
+                <i class="fa-solid fa-hands-holding-circle logo-icon"></i>
+                <h2>Impact<span class="highlight">Hub</span></h2>
+            </div>
+            
+            <ul class="nav-links">
+                <li class="active">
+                    <a href="#"><i class="fa-solid fa-chart-line"></i> Dashboard</a>
+                </li>
+                <li>
+                    <a href="#"><i class="fa-solid fa-users"></i> Volunteers</a>
+                </li>
+                <li>
+                    <a href="#"><i class="fa-solid fa-calendar-check"></i> Opportunities</a>
+                </li>
+                <li>
+                    <a href="#"><i class="fa-solid fa-hand-holding-heart"></i> Impact Reports</a>
+                </li>
+                <li>
+                    <a href="#"><i class="fa-solid fa-bullhorn"></i> Campaigns</a>
+                </li>
+            </ul>
+
+            <div class="sidebar-footer">
+                <a href="#"><i class="fa-solid fa-gear"></i> Settings</a>
+                <a href="#"><i class="fa-solid fa-sign-out-alt"></i> Logout</a>
+            </div>
+        </aside>
+
+        <!-- Main Content -->
+        <main class="main-content">
+            <!-- Header -->
+            <header class="top-header">
+                <div class="search-bar">
+                    <i class="fa-solid fa-search"></i>
+                    <input type="text" placeholder="Search volunteers, skills, or campaigns...">
+                </div>
+                
+                <div class="user-profile">
+                    <button class="icon-btn notification-btn">
+                        <i class="fa-regular fa-bell"></i>
+                        <span class="badge">3</span>
+                    </button>
+                    <div class="profile-info">
+                        <img src="https://i.pravatar.cc/150?img=32" alt="Admin Profile" class="avatar">
+                        <div class="profile-text">
+                            <span class="name">Sarah Jenkins</span>
+                            <span class="role">Coordinator</span>
+                        </div>
+                    </div>
+                </div>
+            </header>
+
+            <!-- Dashboard Title -->
+            <div class="page-title">
+                <h1>Overview</h1>
+                <p>Welcome back! Here's what's happening today.</p>
+                <div class="title-actions">
+                    <button class="btn btn-secondary"><i class="fa-solid fa-download"></i> Export Data</button>
+                    <button class="btn btn-primary"><i class="fa-solid fa-plus"></i> New Event</button>
+                </div>
+            </div>
+
+            <!-- KPI Cards -->
+            <section class="kpi-grid">
+                <div class="kpi-card">
+                    <div class="kpi-icon blue">
+                        <i class="fa-solid fa-users"></i>
+                    </div>
+                    <div class="kpi-details">
+                        <p class="kpi-label">Active Volunteers</p>
+                        <h3 class="kpi-value">1,284</h3>
+                        <p class="kpi-trend positive"><i class="fa-solid fa-arrow-trend-up"></i> +12% this month</p>
+                    </div>
+                </div>
+                
+                <div class="kpi-card">
+                    <div class="kpi-icon green">
+                        <i class="fa-solid fa-clock"></i>
+                    </div>
+                    <div class="kpi-details">
+                        <p class="kpi-label">Hours Logged</p>
+                        <h3 class="kpi-value">8,450</h3>
+                        <p class="kpi-trend positive"><i class="fa-solid fa-arrow-trend-up"></i> +5% this month</p>
+                    </div>
+                </div>
+
+                <div class="kpi-card">
+                    <div class="kpi-icon purple">
+                        <i class="fa-solid fa-calendar-days"></i>
+                    </div>
+                    <div class="kpi-details">
+                        <p class="kpi-label">Upcoming Events</p>
+                        <h3 class="kpi-value">24</h3>
+                        <p class="kpi-trend neutral"><i class="fa-solid fa-minus"></i> Same as last week</p>
+                    </div>
+                </div>
+
+                <div class="kpi-card">
+                    <div class="kpi-icon orange">
+                        <i class="fa-solid fa-seedling"></i>
+                    </div>
+                    <div class="kpi-details">
+                        <p class="kpi-label">Communities Served</p>
+                        <h3 class="kpi-value">156</h3>
+                        <p class="kpi-trend positive"><i class="fa-solid fa-arrow-trend-up"></i> +3 new areas</p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Charts Section -->
+            <section class="charts-grid">
+                <div class="chart-card">
+                    <div class="chart-header">
+                        <h3>Volunteer Engagement</h3>
+                        <select class="chart-filter">
+                            <option>Last 6 Months</option>
+                            <option>This Year</option>
+                        </select>
+                    </div>
+                    <div class="chart-body">
+                        <canvas id="engagementChart"></canvas>
+                    </div>
+                </div>
+
+                <div class="chart-card">
+                    <div class="chart-header">
+                        <h3>Impact by Category</h3>
+                        <button class="icon-btn"><i class="fa-solid fa-ellipsis"></i></button>
+                    </div>
+                    <div class="chart-body">
+                        <canvas id="impactChart"></canvas>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Bottom Section (Tables/Lists) -->
+            <section class="bottom-grid">
+                <!-- Recent Activities -->
+                <div class="data-card">
+                    <div class="card-header">
+                        <h3>Recent Sign-ups</h3>
+                        <a href="#" class="view-all">View All</a>
+                    </div>
+                    <div class="table-responsive">
+                        <table class="data-table">
+                            <thead>
+                                <tr>
+                                    <th>Volunteer</th>
+                                    <th>Event/Project</th>
+                                    <th>Skills</th>
+                                    <th>Status</th>
+                                </tr>
+                            </thead>
+                            <tbody id="volunteer-table-body">
+                                <!-- Data injected via JS -->
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
+                <!-- Upcoming Needs -->
+                <div class="data-card needs-card">
+                    <div class="card-header">
+                        <h3>Urgent Needs</h3>
+                    </div>
+                    <ul class="needs-list">
+                        <li>
+                            <div class="need-info">
+                                <h4>Community Garden Cleanup</h4>
+                                <p>Needs 5 more volunteers tomorrow</p>
+                            </div>
+                            <span class="urgency high">High</span>
+                        </li>
+                        <li>
+                            <div class="need-info">
+                                <h4>Tech Mentorship Workshop</h4>
+                                <p>Looking for 2 Python experts</p>
+                            </div>
+                            <span class="urgency medium">Medium</span>
+                        </li>
+                        <li>
+                            <div class="need-info">
+                                <h4>Food Drive Organization</h4>
+                                <p>Need drivers for weekend</p>
+                            </div>
+                            <span class="urgency low">Low</span>
+                        </li>
+                    </ul>
+                </div>
+            </section>
+        </main>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
